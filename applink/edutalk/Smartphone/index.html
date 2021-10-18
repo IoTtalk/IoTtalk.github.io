@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>applink</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //this page is used for edutalk users without app installed or in not supported platform
+        //1. redirect not supported platform to a web based remote control
+        //2. redirect users without app installed to play store
+        window.onload = function () {
+            let isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+            if (isAndroid) {
+                let beforeTime = Date.now();
+                //open with deep link(when guest avoid applink) or redirect to play store
+                let storeURL = document.location.toString().replace("Smartphone", "apk");
+                window.location = "intent://IoTtalk.github.io/applink/edutalk/Smartphone?data=" + getUrlParameter("data") + "#Intent;scheme=https;package=com.joejoe2.testsensor;S.browser_fallback_url=" + storeURL + ";end";
+                //if above intent(deep link) not working, then redirect to play store
+                setTimeout(function () {
+                    let afterTime = Date.now();
+                    if (afterTime - beforeTime < 2000) {
+                        window.location = storeURL;
+                    }
+                }, 1000);
+            } else {
+                //redirect to edutalk web rc
+                let redirect = getUrlParameter("data");
+                if (redirect) window.location = redirect;
+            }
+        };
+
+
+        function getUrlParameter(sParam) {
+            let sPageURL = window.location.search.substring(1), sURLVariables = sPageURL.split('&'), sParameterName, i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return typeof sParameterName[1] === undefined ? false : decodeURIComponent(sParameterName[1]);
+                }
+            }
+            return false;
+        };
+    </script>
+</body>
+
+</html>

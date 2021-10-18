@@ -19,7 +19,7 @@
                 let beforeTime = Date.now();
                 //open with deep link(when guest avoid applink) or redirect to play store
                 let storeURL = document.location.toString().replace("Smartphone", "apk");
-                window.location = "intent://IoTtalk.github.io/applink/edutalk/Smartphone?data=" + getUrlParameter("data") + "#Intent;scheme=https;package=com.joejoe2.testsensor;S.browser_fallback_url=" + storeURL + ";end";
+                window.location = "intent://iottalk.github.io/applink/edutalk/Smartphone?data=" + getUrlParameter("data") + "#Intent;scheme=https;package=com.joejoe2.testsensor;S.browser_fallback_url=" + storeURL + ";end";
                 //if above intent(deep link) not working, then redirect to play store
                 setTimeout(function () {
                     let afterTime = Date.now();

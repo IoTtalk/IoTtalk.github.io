@@ -22,7 +22,7 @@
     </div>
 </body>
     <script>
-        fetch(document.location.toString().substring(0, document.location.toString().indexOf("/apk"))+"/version.json").then(r => r.json()).
+        fetch(document.location.toString().substring(0, document.location.toString().indexOf("/apk"))+"/apk/version.json").then(r => r.json()).
             then(data => {
                 document.getElementById("downloadLink").href = data["apk"];
             }).

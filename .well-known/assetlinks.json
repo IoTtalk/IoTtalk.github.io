@@ -5,7 +5,7 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.joejoe2.testsensor",
+      "package_name": "com.edutalk.app",
       "sha256_cert_fingerprints": [
         "AF:1A:A0:1E:E6:6D:2F:33:3C:22:FC:7B:F0:52:F7:FD:C8:8B:81:C6:90:7B:ED:7A:63:EF:96:77:4F:67:E6:A7"
       ]

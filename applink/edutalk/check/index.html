@@ -41,16 +41,18 @@
         //ex. "https://joejoe2.github.io/applink/edutalk/support.json"
         fetch(document.location.toString().substring(0, document.location.toString().indexOf("/check"))+"/support.json").then(r => r.json()).
             then(data => {
+                let match=false;
                 //if match any support appPlatform
                 data.forEach(appPlatform => {
-                    if (navigator.userAgent.toLowerCase().indexOf(appPlatform) > -1) {
+                    if (!match&&navigator.userAgent.toLowerCase().indexOf(appPlatform) > -1) {
+                        match = true;
                         let dialog = new bootstrap.Modal(document.getElementById("dialog"));
                         dialog.show();
                         document.getElementById("deepLink").href = prepareDeepLink();
                     }
                 });
                 //else go to web vertion
-                gotoWebRC();
+                if(!match)gotoWebRC();
             }).
             catch(e => {
                 gotoWebRC();

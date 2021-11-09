@@ -19,14 +19,14 @@
                 let beforeTime = Date.now();
                 //open with deep link(when guest avoid applink) or redirect to play store
                 let storeURL = document.location.toString().replace("Smartphone", "apk");
-                window.location = "intent://iottalk.github.io/applink/edutalk/Smartphone?data=" + getUrlParameter("data") + "#Intent;scheme=https;package=com.joejoe2.testsensor;S.browser_fallback_url=" + storeURL + ";end";
+                window.location = "intent://iottalk.github.io/applink/edutalk/Smartphone?data=" + getUrlParameter("data") + "#Intent;scheme=https;package=com.edutalk.app;S.browser_fallback_url=" + storeURL + ";end";
                 //if above intent(deep link) not working, then redirect to play store
                 setTimeout(function () {
                     let afterTime = Date.now();
-                    if (afterTime - beforeTime < 2000) {
+                    if (afterTime - beforeTime < 3000) {
                         window.location = storeURL;
                     }
-                }, 1000);
+                }, 2000);
             } else {
                 //redirect to edutalk web rc
                 let redirect = getUrlParameter("data");

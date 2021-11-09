@@ -41,6 +41,7 @@
         //ex. "https://joejoe2.github.io/applink/edutalk/support.json"
         fetch(document.location.toString().substring(0, document.location.toString().indexOf("/check"))+"/support.json").then(r => r.json()).
             then(data => {
+                //if match any support appPlatform
                 data.forEach(appPlatform => {
                     if (navigator.userAgent.toLowerCase().indexOf(appPlatform) > -1) {
                         let dialog = new bootstrap.Modal(document.getElementById("dialog"));
@@ -48,6 +49,8 @@
                         document.getElementById("deepLink").href = prepareDeepLink();
                     }
                 });
+                //else go to web vertion
+                gotoWebRC();
             }).
             catch(e => {
                 gotoWebRC();
